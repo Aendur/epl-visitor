@@ -18,7 +18,7 @@ class TestAdd extends FlatSpec with Matchers with GivenWhenThen with BeforeAndAf
     literal200 = new Literal(200) 
   }
 
-  it should "return String (100 + 200) when we call Add(Literal(100), Literal(200).print())" in {
+  it should "return String (100 + 200) when we call Add(Literal(100), Literal(200)).print()" in {
     val add = new Add(literal100, literal200)
   
     add.print() should be ("(100 + 200)")

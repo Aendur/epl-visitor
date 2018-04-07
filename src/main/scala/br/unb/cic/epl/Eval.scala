@@ -10,5 +10,19 @@ class Eval extends Visitor{
     val vr = res
     res = vl + vr
   }
+  override def visit(exp: Mul) {
+    exp.lhs.accept(this)
+    val vl = res
+    exp.rhs.accept(this)
+    val vr = res
+    res = vl * vr
+  }
+  override def visit(exp: Sub) {
+    exp.lhs.accept(this)
+    val vl = res
+    exp.rhs.accept(this)
+    val vr = res
+    res = vl - vr
+  }
   def result() : Int = res
 }
