@@ -1,9 +1,9 @@
 package br.unb.cic.epl
 
-class Eval extends Visitor{
+class Eval extends Visitor {
   var res : Int = 0 
-  override def visit(exp: Literal) { res = exp.value } 
-  override def visit(exp: Add) {
+  override def visit (exp: Literal) { res = exp.value } 
+  override def visit (exp: Add) {
     exp.lhs.accept(this)
     val vl = res
     exp.rhs.accept(this)

@@ -29,4 +29,23 @@ class TestSub extends FlatSpec with Matchers with GivenWhenThen with BeforeAndAf
     sub.accept(eval)
     eval.result() should be (-10)
   }
+
+  it should "return 2 when we call Sub(Literal(20), Literal(30)).height()" in {
+    val height = new Height()
+    val sub = new Sub(literal20, literal30)
+    sub.accept(height)
+    height.height() should be (2)
+  }
+  it should "return 3 when we call Sub(Sub(Literal(20), Literal(30)), Literal(30)).height()" in {
+    val height = new Height()
+    val sub = new Sub(new Sub(literal20, literal30), literal30)
+    sub.accept(height)
+    height.height() should be (3)
+  }
+  it should "return 3 when we call Sub(Literal(20), Sub(Literal(20), Literal(30))).height()" in {
+    val height = new Height()
+    val sub = new Sub(literal20, new Sub(literal20, literal30))
+    sub.accept(height)
+    height.height() should be (3)
+  }
 }
